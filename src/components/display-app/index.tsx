@@ -1,9 +1,17 @@
 
-function DisplayApp(props) {    
-    
-    const {minutes, seconds} = props.time;
+function DisplayApp({time}) { 
 
-    return <h1>{minutes}:{seconds}</h1>;
+    function getMinutesTime(): string {
+        let minutesTime =  Math.floor(time.seconds / 60);
+        return minutesTime.toString().padStart(2, "0");
+    }
+
+    function getSecondsTime(): string {
+        let secondsTime = Math.floor(time.seconds % 60);
+        return secondsTime.toString().padStart(2, "0");
+    } 
+
+    return <h1>{getMinutesTime()}:{ getSecondsTime()}</h1>;
 }
 
 export default DisplayApp;
