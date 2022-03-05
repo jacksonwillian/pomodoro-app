@@ -20,15 +20,12 @@ function HomeApp() {
     } 
 
     function start(): void {
-        console.log("press Start");
-        if(seconds !== INITIAL_TIME_SECONDS) {
-            setPaused(true);
-            setSeconds(INITIAL_TIME_SECONDS);
+        if(seconds === INITIAL_TIME_SECONDS) {
+            setPaused(false);
         } else {
             setSeconds(INITIAL_TIME_SECONDS);
-        }
-        setPaused(state => !state);
-        
+            setPaused(true);
+        }            
     }
 
     function pause(): void {
@@ -36,21 +33,25 @@ function HomeApp() {
     }
 
     useEffect(() => {
-        if(paused === false) {
-            setTimeout(
-                () => {
-                    setSeconds(state => state - 1);
-                }, 
-                1000,
-            );
+        var timeOut = setTimeout(
+            () => {
+                setSeconds(state => state - 1);
+            }, 
+            1000,
+        );
+        if(paused === true) {
+            clearTimeout(timeOut);
         }
+        return () => {
+            clearTimeout(timeOut);
+        };
     }, [seconds, paused]);
 
     return (
         <>
             <h1>Pomodoro App</h1>
             <DisplayApp time = {{ minutes: getMinutesTime(), seconds: getSecondsTime() }} />
-            <ButtonApp onClick = {() => {start();}} name={(INITIAL_TIME_SECONDS === seconds)? "Iniciar" : "Reiniciar"}/>
+            <ButtonApp onClick = {() => {start();}} name={(INITIAL_TIME_SECONDS === seconds)? "Iniciar" : "Parar"}/>
             <ButtonApp onClick = {() => {pause();}} name={paused? "Retomar": "Pausar"}/>
         </>
     );
