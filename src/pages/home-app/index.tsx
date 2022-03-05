@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import ButtonApp from "../../components/button-app/index.tsx";
 import DisplayApp from "../../components/display-app/index.tsx";
+import "../../styles.css";
 
 import sound from '../../assets/beep-472.mp3';
 import sound2 from '../../assets/long-dang-168.mp3';
@@ -13,18 +13,13 @@ function HomeApp() {
     const [seconds, setSeconds] = useState(INITIAL_TIME_SECONDS);
     const [paused, setPaused] = useState(true);
 
-
     function start(): void {
-        if(seconds === INITIAL_TIME_SECONDS) {
-            setPaused(false);
-        } else {
-            setPaused(true);
-            setSeconds(INITIAL_TIME_SECONDS);
-        }            
+        setPaused(state => !state);         
     }
 
-    function pause(): void {
-        setPaused(state => !state);
+    function stop(): void {
+        setPaused(true);
+        setSeconds(INITIAL_TIME_SECONDS);
     }
 
     useEffect(() => {
@@ -45,8 +40,7 @@ function HomeApp() {
 
         if (seconds === 0) {
             new Audio(sound2).play();
-            setPaused(true);
-            setSeconds(INITIAL_TIME_SECONDS);
+            stop();
         }
         return () => {
             clearTimeout(timeOut);
@@ -57,16 +51,23 @@ function HomeApp() {
     return (
         <>
             <h1>Pomodoro App</h1>
-
+            <div className="content-center tomate">
+            <span className="branch"></span>
+            <span className="login_leaf_class leaf_left"></span>
+            <span className="login_leaf_class leaf_right"></span>
+            <span className="login_leaf_class leaf_center"></span>
             <DisplayApp time = {{seconds}} />
-            <ButtonApp onClick = {() => {start();}} name={(INITIAL_TIME_SECONDS === seconds)? "Iniciar" : "Parar"}/>
-            <ButtonApp onClick = {() => {pause();}} name={paused? "Retomar": "Pausar"}/>
+            <div className="buttons">
+                <span onClick = {() => {start();}} > &#x23EF; </span>
+                <span onClick = {() => {stop();}} > &#x23F9; </span> 
+            </div>
+            </div> 
 
-            <footer>
-                Sounds from <a href="https://notificationsounds.com/" target="_blank">Notification Sounds</a>.
+            <footer className="footer">
+                Sounds from <a href="https://notificationsounds.com/" target="_blank" rel="noreferrer">Notification Sounds</a>.
             </footer>
-            
         </>
+
     );
 
 }

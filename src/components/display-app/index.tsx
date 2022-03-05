@@ -1,4 +1,6 @@
 
+import "./styles.css";
+
 function DisplayApp({time}) { 
 
     function getMinutesTime(): string {
@@ -11,7 +13,7 @@ function DisplayApp({time}) {
         return secondsTime.toString().padStart(2, "0");
     } 
 
-    return <h1>{getMinutesTime()}:{ getSecondsTime()}</h1>;
+    return <h1 className="display">{getMinutesTime()}:{getSecondsTime()}</h1>;
 }
 
 export default DisplayApp;
