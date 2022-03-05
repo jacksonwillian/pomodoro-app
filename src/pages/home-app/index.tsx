@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import DisplayApp from "../../components/display-app/index.tsx";
 import "../../styles.css";
@@ -12,6 +12,8 @@ function HomeApp() {
 
     const [seconds, setSeconds] = useState(INITIAL_TIME_SECONDS);
     const [paused, setPaused] = useState(true);
+    const _sound = useRef(new Audio(sound));
+    const _sound2 = useRef(new Audio(sound2));
 
     function start(): void {
         setPaused(state => !state);         
@@ -35,11 +37,11 @@ function HomeApp() {
         }
 
         if (seconds <= 5) {
-            new Audio(sound).play();
+            _sound.current.play();
         }
 
         if (seconds === 0) {
-            new Audio(sound2).play();
+            _sound2.current.play();
             stop();
         }
         return () => {
