@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.352241c7.css",
+    "main.js": "/static/js/main.d8f011c1.js",
+    "static/media/long-dang-168.mp3": "/static/media/long-dang-168.f391630d0fce23e0b8ef.mp3",
+    "static/media/beep-472.mp3": "/static/media/beep-472.9c48b6ffef5dbccc5433.mp3",
+    "index.html": "/index.html",
+    "main.352241c7.css.map": "/static/css/main.352241c7.css.map",
+    "main.d8f011c1.js.map": "/static/js/main.d8f011c1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.352241c7.css",
+    "static/js/main.d8f011c1.js"
+  ]
+}
