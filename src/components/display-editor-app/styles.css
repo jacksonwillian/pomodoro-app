@@ -1,0 +1,29 @@
+
+.display {
+    color: #ffff;
+    font-size: 2em;
+    display: flex;
+    margin-top: 1.1em;
+    margin-bottom: 0.5em;
+
+}
+
+.digit {
+    cursor: pointer;
+}
+
+
+select {
+    font-family: inherit;
+    font-size: inherit;
+    appearance: none;
+    border: none;
+    font-size: 1em;
+    text-align: center;
+    border-radius: 0.25em;
+}
+
+select,
+.select:after {
+    background: #f3a7a7;
+}

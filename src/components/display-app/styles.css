@@ -1,10 +1,8 @@
 
-.display {
-    color: #ffff;
-    font-size: 2em;
-    margin-top: 15%;
-}
-
 .digit {
+    color: #000;
+    font-size: 1em;
     cursor: pointer;
+    border-radius: 0.25em;
+    background: #f3a7a7;
 }
