@@ -1,4 +1,10 @@
 
 .display {
     color: #ffff;
+    font-size: 2em;
+    margin-top: 15%;
+}
+
+.digit {
+    cursor: pointer;
 }

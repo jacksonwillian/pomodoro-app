@@ -64,9 +64,14 @@ h1 {
     position: absolute;
 }
 
-.buttons {
-    display: block;
+.button {
     cursor: pointer;
+    font-size: 2em;
+    color: #ffff;
+}
+
+.button:hover, .button:focus {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .footer {

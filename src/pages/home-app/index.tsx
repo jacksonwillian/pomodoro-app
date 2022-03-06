@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
+import { BsFillPauseFill, BsPlayFill, BsFillStopFill} from "react-icons/bs";
+
+
 import DisplayApp from "../../components/display-app/index.tsx";
 import "../../styles.css";
 
@@ -12,6 +15,7 @@ function HomeApp() {
 
     const [seconds, setSeconds] = useState(INITIAL_TIME_SECONDS);
     const [paused, setPaused] = useState(true);
+
     const _sound = useRef(new Audio(sound));
     const _sound2 = useRef(new Audio(sound2));
 
@@ -59,9 +63,9 @@ function HomeApp() {
             <span className="login_leaf_class leaf_right"></span>
             <span className="login_leaf_class leaf_center"></span>
             <DisplayApp time = {{seconds}} />
-            <div className="buttons">
-                <span onClick = {() => {start();}} > &#x23EF; </span>
-                <span onClick = {() => {stop();}} > &#x23F9; </span> 
+            <div>
+                <span className="button" onClick = {() => start()} > {paused? <BsPlayFill /> : <BsFillPauseFill /> } </span>
+                <span className="button" onClick = {() => stop()} > <BsFillStopFill /> </span> 
             </div>
             </div> 
 
